@@ -25,45 +25,128 @@ type MergedJWT struct {
 	Payload JWTPayload `json:"payload"`
 }
 
-func main() {
-	req, err := httptool.NewRequest(
-		httptool.GETMETHOD,
-		"https://gtainmuxi.muxixyz.com/api/v1/organization/code",
-		"",
-		httptool.DEFAULT, // 这里可能不是 DEFAULT，自己去翻阅文档
-	)
-	if err != nil {
-		fmt.Println(err)
-	}
-	req1, err := httptool.NewRequest(
-		httptool.GETMETHOD,
-		"http://http-theft-bank.gtainccnu.muxixyz.com/api/v1/organization/secret_key",
-		"",
-		httptool.DEFAULT, // 这里可能不是 DEFAULT，自己去翻阅文档
-	)
-	if err != nil {
-		fmt.Println(err)
-	}
+const filePath = "C:\\Users\\OMEN\\Desktop\\GTAinMuXi\\GTAinMuXi\\checkpoint3\\test.jpg"
 
-	fmt.Println(req)
+func main() {
+	// req, err := httptool.NewRequest(
+	// 	httptool.GETMETHOD,
+	// 	"https://gtainmuxi.muxixyz.com/api/v1/organization/code",
+	// 	"",
+	// 	httptool.DEFAULT, // 这里可能不是 DEFAULT，自己去翻阅文档
+	// )
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// req1, err := httptool.NewRequest(
+	// 	httptool.GETMETHOD,
+	// 	"http://http-theft-bank.gtainccnu.muxixyz.com/api/v1/organization/secret_key",
+	// 	"",
+	// 	httptool.DEFAULT, // 这里可能不是 DEFAULT，自己去翻阅文档
+	// )
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+
+	// fmt.Println(req)
 
 	// write your code below
 	// ...
 	passport := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlIjoiT01FTiIsImlhdCI6MTc2Mjc3MjYyNSwibmJmIjoxNzYyNzcyNjI1fQ.vbdUhVyXAwJ35N5uWQVYmJ--MEbDDEgGdnTgRPcBI28"
-	merged, err := decodeJWTStructured(passport)
+
+	// req1.Req.Header.Set("passport", passport)
+	// resp, err := req1.SendRequest()
+	// if err != nil {
+	// 	fmt.Printf("error sending request: %q", err)
+	// }
+	// resp.ShowHeader()
+	// resp.ShowBody()
+	// secret := "c2VjcmV0X2tleTpNdXhpU3R1ZGlvMjAzMzA0LCBlcnJvcl9jb2RlOmZvciB7Z28gZnVuYygpe3RpbWUuU2xlZXAoMSp0aW1lLkhvdXIpfSgpfQ=="
+	// errCode, err := encrypt.Base64Decode(secret)
+	// if err != nil {
+	// 	fmt.Printf("error decoding: %q", err)
+	// }
+	// fmt.Println(errCode)
+	// secret_key := []byte("MuxiStudio203304")
+	// error_code := []byte("for {go func(){time.Sleep(1*time.Hour)}()}")
+	// encrption, err := encrypt.AESEncryptOutInBase64(error_code, secret_key)
+	// if err != nil {
+	// 	fmt.Printf("error encrtpting: %q", err)
+	// }
+	// req2, err := httptool.NewRequest(
+	// 	httptool.PUTMETHOD,
+	// 	"http://http-theft-bank.gtainccnu.muxixyz.com/api/v1/bank/gate",
+	// 	string(encrption),
+	// 	httptool.DEFAULT, // 这里可能不是 DEFAULT，自己去翻阅文档
+	// )
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// req2.Req.Header.Set("passport", passport)
+	// resp1, err := req2.SendRequest()
+	// if err != nil {
+	// 	fmt.Printf("error sending request: %q", err)
+	// }
+	// resp1.ShowBody()
+
+	// req3, err := httptool.NewRequest(
+	// 	httptool.GETMETHOD,
+	// 	"http://http-theft-bank.gtainccnu.muxixyz.com/api/v1/bank/iris_recognition_gate",
+	// 	"",
+	// 	httptool.DEFAULT, // 这里可能不是 DEFAULT，自己去翻阅文档
+	// )
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// req3.Req.Header.Set("passport", passport)
+	// resp2, err := req3.SendRequest()
+	// if err != nil {
+	// 	fmt.Printf("error sending request: %q", err)
+	// }
+	// resp2.ShowHeader()
+	// resp2.ShowBody()
+
+	// dir, err := os.Getwd()
+	// if err != nil {
+	// 	fmt.Printf("Failed to get working directory: %v", err)
+	// }
+
+	// req4, err := httptool.NewRequest(
+	// 	httptool.GETMETHOD,
+	// 	"http://http-theft-bank.gtainccnu.muxixyz.com/api/v1/organization/iris_sample",
+	// 	filePath,
+	// 	httptool.DEFAULT, // 这里可能不是 DEFAULT，自己去翻阅文档
+	// )
+	// if err != nil {
+	// 	fmt.Printf("error new: %q", err)
+	// }
+	// req4.Req.Header.Set("passport", passport)
+	// resp3, err := req4.SendRequest()
+	// if err != nil {
+	// 	fmt.Printf("error sending request: %q", err)
+	// }
+	// // resp3.ShowHeader()
+	// // resp3.ShowBody()
+	// err = resp3.Save(filePath)
+	// if err != nil {
+	// 	fmt.Printf("error saving: %q", err)
+	// }
+
+	req5, err := httptool.NewRequest(
+		httptool.POSTMETHOD,
+		"http://http-theft-bank.gtainccnu.muxixyz.com/api/v1/bank/iris_recognition_gate",
+		filePath,
+		httptool.FILE,
+	)
 	if err != nil {
-		fmt.Printf("error decoding: %q", err)
+		fmt.Println(err)
 	}
-	mergedJSON, err := json.Marshal(merged)
-	if err != nil {
-		fmt.Printf("error marshaling: %q", err)
-	}
-	req1.Req.Header.Set("passport", string(mergedJSON))
-	resp, err := req1.SendRequest()
+	req5.Req.Header.Set("passport", passport)
+	resp4, err := req5.SendRequest()
 	if err != nil {
 		fmt.Printf("error sending request: %q", err)
 	}
-	resp.ShowBody()
+	resp4.ShowHeader()
+	resp4.ShowBody()
 }
 
 func decodeJWTStructured(jwt string) (*MergedJWT, error) {

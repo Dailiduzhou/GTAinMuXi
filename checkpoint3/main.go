@@ -26,6 +26,7 @@ type MergedJWT struct {
 }
 
 const filePath = "C:\\Users\\OMEN\\Desktop\\GTAinMuXi\\GTAinMuXi\\checkpoint3\\test.jpg"
+const filePath1 = "C:\\Users\\OMEN\\Desktop\\GTAinMuXi\\combination.go"
 
 func main() {
 	// req, err := httptool.NewRequest(
@@ -131,22 +132,56 @@ func main() {
 	// 	fmt.Printf("error saving: %q", err)
 	// }
 
-	req5, err := httptool.NewRequest(
+	// req5, err := httptool.NewRequest(
+	// 	httptool.POSTMETHOD,
+	// 	"http://http-theft-bank.gtainccnu.muxixyz.com/api/v1/bank/iris_recognition_gate",
+	// 	filePath,
+	// 	httptool.FILE,
+	// )
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// req5.Req.Header.Set("passport", passport)
+	// resp4, err := req5.SendRequest()
+	// if err != nil {
+	// 	fmt.Printf("error sending request: %q", err)
+	// }
+	// resp4.ShowHeader()
+	// resp4.ShowBody()
+
+	// req6, err := httptool.NewRequest(
+	// 	httptool.GETMETHOD,
+	// 	"http://http-theft-bank.gtainccnu.muxixyz.com/api/v1/muxi/backend/computer/examination",
+	// 	"",
+	// 	httptool.DEFAULT,
+	// )
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// req6.Req.Header.Set("passport", passport)
+	// resp5, err := req6.SendRequest()
+	// if err != nil {
+	// 	fmt.Printf("error sending request: %q", err)
+	// }
+	// resp5.ShowHeader()
+	// resp5.ShowBody()
+
+	req7, err := httptool.NewRequest(
 		httptool.POSTMETHOD,
-		"http://http-theft-bank.gtainccnu.muxixyz.com/api/v1/bank/iris_recognition_gate",
-		filePath,
+		"http://http-theft-bank.gtainccnu.muxixyz.com/api/v1/muxi/backend/computer/examination",
+		filePath1,
 		httptool.FILE,
 	)
 	if err != nil {
 		fmt.Println(err)
 	}
-	req5.Req.Header.Set("passport", passport)
-	resp4, err := req5.SendRequest()
+	req7.Req.Header.Set("passport", passport)
+	resp6, err := req7.SendRequest()
 	if err != nil {
 		fmt.Printf("error sending request: %q", err)
 	}
-	resp4.ShowHeader()
-	resp4.ShowBody()
+	resp6.ShowHeader()
+	resp6.ShowBody()
 }
 
 func decodeJWTStructured(jwt string) (*MergedJWT, error) {
